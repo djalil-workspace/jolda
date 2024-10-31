@@ -31,7 +31,7 @@ def home():
 def search():
     location = request.form['location']
     # Простая фильтрация результатов по введенному месту
-    filtered_results = [k for i,k in routes.items() if location in i]
+    filtered_results = [k for i,k in routes.items() if location.lower() in i]
     return render_template('search.html', results=filtered_results, loc=location)
 
 @app.route('/map')
@@ -44,4 +44,4 @@ def qrcode():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.100.38')
+    app.run(debug=True, host='0.0.0.0')
